@@ -4,6 +4,9 @@ const jwt = require("jsonwebtoken"); //生成token
 const expressJwt = require('express-jwt');  //配置私钥匙
 const cors = require('cors'); //实现服务器的跨域请求
 const bodyParser = require('body-parser'); //Express（4.x）的最新版本已经将body parser中间件从核心框架中分离出来了。如果你需要body parser，你应该单独安装一个
+const { data,user,imgBase64 }  = require('./mock/data');
+//import { data } from './mock/data';
+
 const app= express();
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -78,6 +81,15 @@ app.post('/api/logout', auth ,(req, res)=>{
 app.post('/api/reg', (req, res)=>{
     res.send('reg');
 });
+
+app.post('/img',(req,res) =>{
+    res.send(JSON.stringify(data,null,4));
+})
+
+app.get('/user',(req,res) =>{
+    res.send(user);
+})
+
 app.listen(8083, ()=>{
     console.log('Server is running at http://localhost:8083')
 })

@@ -1,12 +1,20 @@
+const webapck = require('webpack');
 const express = require('express');
 const app= express();
 const bodyParser = require('body-parser');
+const webpackMiddleware  = require('webpack-dev-middleware');
+let webpackConfig = require('./webpack.config.js');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+
+var compiler = webpack(webpackConfig);
+app.use(webpackMiddleware(compiler,{
+    publicPath:webpackConfig.publicPath
+}));
 
 //设置该服务器可以被跨域访问
 app.all('*', function (req, res, next) {
@@ -26,7 +34,7 @@ app.all('*', function (req, res, next) {
 });
 
     
-app.get('/', (req, res)=>{
+app.get('/123', (req, res)=>{
     res.send('Hello world');
 });
 app.post('/api/login', (req, res)=>{
