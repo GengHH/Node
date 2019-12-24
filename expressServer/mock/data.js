@@ -1,15 +1,18 @@
 var Mock = require("mockjs");
 module.exports.data = Mock.mock({
-  "list|10": [
+  "imgList|10-20": [
     {
       "id|+1": 1,
       title: "@title",
       name: '@name',
       nickName: '@last',
-      content: "@sentence(5)",
+      content: "@sentence(3)",
       createTime: "@date",
       avatar () {
         return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.nickName.substr(0, 1))
+      },
+      path () {
+        return Mock.Random.image('300x200', Mock.Random.color(), '#fff', 'png', this.nickName)
       },
     }
   ]
