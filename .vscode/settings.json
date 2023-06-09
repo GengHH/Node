@@ -1,7 +1,23 @@
 {
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#281B7A",
-        "titleBar.activeBackground": "#3826AB",
-        "titleBar.activeForeground": "#FDFCFE"
-    }
+	"workbench.colorCustomizations": {
+		"activityBar.background": "#281B7A",
+		"titleBar.activeBackground": "#3826AB",
+		"titleBar.activeForeground": "#FDFCFE"
+	},
+	"sqltools.connections": [
+		{
+			"mysqlOptions": {
+				"authProtocol": "xprotocol"
+			},
+			"previewLimit": 50,
+			"server": "localhost",
+			"port": 33060,
+			"driver": "MySQL",
+			"name": "node-mysql",
+			"database": "mysql",
+			"username": "root",
+			"password": "123456",
+			"connectionTimeout": 15
+		}
+	]
 }
