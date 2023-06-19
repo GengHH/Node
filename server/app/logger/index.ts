@@ -3,10 +3,12 @@ log4js.configure({
 	appenders: {
 		cheese: { type: "file", filename: "logs/cheese.log" },
 		access: { type: "file", filename: "logs/access.log" },
+		db: { type: "file", filename: "logs/db.log" },
 	},
 	categories: {
 		default: { appenders: ["cheese"], level: "info" },
 		access: { appenders: ["access"], level: "info" },
+		db: { appenders: ["db"], level: "info" },
 	},
 })
 
@@ -19,6 +21,7 @@ logger.error("Cheese is too ripe!")
 logger.fatal("Cheese was breeding ground for listeria.")
 
 export const accessLogger = log4js.getLogger("access")
+export const dbLogger = log4js.getLogger("db")
 export default logger
 
 /**
