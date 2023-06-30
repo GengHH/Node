@@ -1,3 +1,13 @@
+/*
+ * @Author: GengHH
+ * @Date: 2023-06-08 14:38:22
+ * @LastEditors: GengHH
+ * @LastEditTime: 2023-06-30 16:50:11
+ * @Description: file content
+ * @FilePath: \Node\server\app\index.ts
+ */
+import dotenv from "dotenv"
+dotenv.config()
 import koa from "koa"
 import router from "./router"
 import { Server } from "http"
