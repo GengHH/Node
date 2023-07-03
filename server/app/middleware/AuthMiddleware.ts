@@ -2,21 +2,23 @@
  * @Author: GengHH
  * @Date: 2023-06-30 16:02:47
  * @LastEditors: GengHH
- * @LastEditTime: 2023-06-30 17:05:53
+ * @LastEditTime: 2023-07-03 14:32:03
  * @Description: file content
  * @FilePath: \Node\server\app\middleware\AuthMiddleware.ts
  */
 import { Context, Next } from "koa"
 // import { accessLogger } from "../logger"
 import { verify } from "../utils/auth"
+import response from "../utils/response"
 
-const AuthMiddleware = (etx: Context, next: Next) => {
-	// accessLogger.info(`path:${etx.path}`)
-	const token = etx.headers["authorization"]
+const AuthMiddleware = (ctx: Context, next: Next) => {
+	// accessLogger.info(`path:${ctx.path}`)
+	const token = ctx.headers["authorization"]
 	if (token) {
 		const { error } = verify(token as string)
 		if (error !== null) {
-			etx.body = {
+			// TODO
+			ctx.body = {
 				msg: error,
 				code: 4000,
 			}
@@ -25,10 +27,7 @@ const AuthMiddleware = (etx: Context, next: Next) => {
 			return next()
 		}
 	}
-	etx.body = {
-		msg: "authorization can't be null",
-		code: 4000,
-	}
+	response.error(ctx, "authorization can't be null", {}, 4000)
 	return
 }
 
