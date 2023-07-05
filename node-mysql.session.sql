@@ -55,3 +55,27 @@ VALUES (
     '18818060415@163.com',
     '18818060415'
   );
+-------------------------------------------------------------------------------------------------userInfo
+drop table userInfo;
+--建表语句
+create table userInfo (
+  id bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  name VARCHAR(25),
+  password VARCHAR(25),
+  sex VARCHAR(25),
+  avata VARCHAR(25),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
+  primary key(id)
+);
+--
+select *
+from userInfo;
+--
+INSERT INTO userInfo (name, password, sex, avata)
+VALUES (
+    'genghh',
+    '123456',
+    '1',
+    null
+  );

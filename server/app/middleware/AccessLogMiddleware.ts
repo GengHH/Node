@@ -3,7 +3,7 @@ import { accessLogger } from "../logger"
 
 const AccessLogMiddleware = (etx: Context, next: Next) => {
 	accessLogger.info(`path:${etx.path}`)
-	next()
+	return next()
 }
 
 export default AccessLogMiddleware
