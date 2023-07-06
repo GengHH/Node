@@ -2,7 +2,7 @@
  * @Author: GengHH
  * @Date: 2023-06-08 14:35:15
  * @LastEditors: GengHH
- * @LastEditTime: 2023-07-05 16:50:53
+ * @LastEditTime: 2023-07-06 17:35:02
  * @Description: file content
  * @FilePath: \Node\server\app\router\index.ts
  */
@@ -18,7 +18,7 @@ const router = new koaRouter({ prefix: "/admin" })
 /**
  * 登录
  */
-router.post("/login", LoginController.login)
+router.get("/login", LoginController.login)
 /**
  * 进行签名token认证的判断
  */
