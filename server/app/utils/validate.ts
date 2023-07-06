@@ -2,7 +2,7 @@
  * @Author: GengHH
  * @Date: 2023-07-06 15:25:50
  * @LastEditors: GengHH
- * @LastEditTime: 2023-07-06 17:19:42
+ * @LastEditTime: 2023-07-06 18:04:38
  * @Description: file content
  * @FilePath: \Node\server\app\utils\validate.ts
  */
@@ -21,7 +21,7 @@ async function validate<T extends Values>(
 	flag: boolean = false
 ): Promise<{ data: T; error: any | null }> {
 	const data: any = getFormData(ctx)
-	console.log("data", data)
+	console.log("validate data", data)
 	const validator = new Schema(rules)
 	return await validator
 		.validate(data)
@@ -51,18 +51,20 @@ async function validate<T extends Values>(
  * @returns
  */
 function getFormData(ctx: Context) {
+	let data: any = {}
 	// TODO 不仅get,post
 	switch (ctx.method) {
 		case "GET":
-			const data: any = {}
 			const usp = new URLSearchParams(ctx.querystring)
 			console.log("usp", usp)
 			for (const [key, value] of usp) {
 				data[key] = value
 			}
-			return data
-		case "post":
-			return ctx.request.body as any
+
+		case "POST":
+			console.log(ctx.request.body)
+			data = ctx.request.body || {}
 	}
+	return data
 }
 export default validate

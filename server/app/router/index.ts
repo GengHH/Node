@@ -2,7 +2,7 @@
  * @Author: GengHH
  * @Date: 2023-06-08 14:35:15
  * @LastEditors: GengHH
- * @LastEditTime: 2023-07-06 17:35:02
+ * @LastEditTime: 2023-07-06 17:53:03
  * @Description: file content
  * @FilePath: \Node\server\app\router\index.ts
  */
@@ -16,9 +16,13 @@ import AuthMiddleware from "../middleware/AuthMiddleware"
 const router = new koaRouter({ prefix: "/admin" })
 
 /**
+ * 注册
+ */
+router.post("/register", LoginController.register)
+/**
  * 登录
  */
-router.get("/login", LoginController.login)
+router.post("/login", LoginController.login)
 /**
  * 进行签名token认证的判断
  */

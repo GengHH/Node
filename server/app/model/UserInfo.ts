@@ -1,3 +1,11 @@
+/*
+ * @Author: GengHH
+ * @Date: 2023-07-04 16:04:01
+ * @LastEditors: GengHH
+ * @LastEditTime: 2023-07-06 18:08:11
+ * @Description: file content
+ * @FilePath: \Node\server\app\model\UserInfo.ts
+ */
 import { Table, Column, Model, DataType, AllowNull } from "sequelize-typescript"
 
 @Table({
@@ -24,14 +32,14 @@ export class UserInfo extends Model<UserInfo> {
 	})
 	password!: string
 
-	@AllowNull(false)
+	@AllowNull(true)
 	@Column({
 		type: DataType.INTEGER,
 		comment: "性别",
 	})
 	sex!: number
 
-	@AllowNull(false)
+	@AllowNull(true)
 	@Column({
 		type: DataType.INTEGER,
 		comment: "头像",

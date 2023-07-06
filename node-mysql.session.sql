@@ -61,7 +61,7 @@ drop table userInfo;
 create table userInfo (
   id bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
   name VARCHAR(25),
-  password VARCHAR(25),
+  password VARCHAR(100),
   sex VARCHAR(25),
   avata VARCHAR(25),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -76,6 +76,6 @@ INSERT INTO userInfo (name, password, sex, avata)
 VALUES (
     'genghh',
     '123456',
-    '1',
+    null,
     null
   );
