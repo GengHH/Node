@@ -2,7 +2,7 @@
  * @Author: GengHH
  * @Date: 2023-06-08 14:35:15
  * @LastEditors: GengHH
- * @LastEditTime: 2023-07-06 17:53:03
+ * @LastEditTime: 2023-07-07 15:36:19
  * @Description: file content
  * @FilePath: \Node\server\app\router\index.ts
  */
@@ -10,6 +10,7 @@ import { Context, Next } from "koa"
 import koaRouter from "koa-router"
 import IndexController from "../controller/IndexController"
 import LoginController from "../controller/LoginController"
+import UploadController from "../controller/UploadController"
 import PageController from "../controller/PageController"
 import AdminService from "../service/AdminService"
 import AuthMiddleware from "../middleware/AuthMiddleware"
@@ -23,6 +24,10 @@ router.post("/register", LoginController.register)
  * 登录
  */
 router.post("/login", LoginController.login)
+/**
+ * 上传文件
+ */
+router.post("/uploadFile", UploadController.upload)
 /**
  * 进行签名token认证的判断
  */
